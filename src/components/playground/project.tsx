@@ -5,7 +5,7 @@ import *  as classes from './project.module.css'
 
 interface ProjectProps{
   title: string;
-  image: string | undefined;
+  image?: string;
   tags: string[]
   children: ReactNode;
 }

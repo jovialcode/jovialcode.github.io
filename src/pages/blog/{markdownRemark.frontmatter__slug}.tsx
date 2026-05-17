@@ -14,20 +14,25 @@ interface PostData {
       title: string
       date: string
       slug: string
+      featuredImage?: {
+        childImageSharp?: {
+          gatsbyImageData: import('gatsby-plugin-image').IGatsbyImageData
+        }
+      }
     }
   }
 }
 
 const PostTemplate: React.FC<PageProps<PostData>> = ({ data }) => {
   const post = data.markdownRemark
-  let featuredImg = getImage(post.frontmatter.featuredImage?.childImageSharp?.gatsbyImageData)
+  let featuredImg = getImage(post.frontmatter.featuredImage?.childImageSharp?.gatsbyImageData ?? null)
   return (
     <Layout>
       <div className={"Blog markdown"}>
         <h1 className={"text-3xl"}>{post.frontmatter.title}</h1>
         <p className={"mb-2 text-gray-400"}>{post.frontmatter.date}</p>
         <div className={"text-center mt-8 mb-14"}>
-          <GatsbyImage image={featuredImg} alt={"entrance"}/>
+          {featuredImg && <GatsbyImage image={featuredImg} alt={"entrance"}/>}
         </div>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </div>

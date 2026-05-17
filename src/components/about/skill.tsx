@@ -23,7 +23,7 @@ export const Skill = ({ job, skills, children }: SkillProps) => {
 
 export default Skill;
 
-const SkillDescription = ({children}: ReactNode) => {
+const SkillDescription = ({children}: {children: ReactNode}) => {
   return (
     <div className={"mt-1"}>
       {children}

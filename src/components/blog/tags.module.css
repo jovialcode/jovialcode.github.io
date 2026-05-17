@@ -1,3 +1,5 @@
+@reference "../../styles/global.css";
+
 .Tags {
     @apply
     mt-1

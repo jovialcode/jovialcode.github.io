@@ -8,13 +8,13 @@ tag: ["Core"]
 ---
 
 ### Intro
-[`ClassFile-1`](/blog/java-classfile-1/) 에 이어서 클래스파일의 속성에 대해서 정리합니다.
+[`ClassFile-1`](/blog/java-classfile-1/) 에 이어서 클래스파일의 속성에 대해서 정리한다.
 # 
 ### ClassFile Attribute
 ![Classfile](../../static/images/contents/java/java_classfile.png)
 `클래스파일`은 클래스 메타 정보와 속성으로 구성되며
 `속성`은 클래스의 메타 정보를 제외한 `final`,`Exceptions`, `SourceFile`, `제네릭 타입`, `Code속성` 등의 클래스를 풍부하게 하는
-기능을 나타냅니다. `속성`은 `class_file`, `field_info`, `method_info`,`Code속성` 등에서 목적에 맞게 존재합니다.
+기능을 나타낸다. `속성`은 `class_file`, `field_info`, `method_info`,`Code속성` 등에서 목적에 맞게 존재한다.
 #
 
 ```java
@@ -24,14 +24,14 @@ attribute_info {
     u1 info[attribute_length];
 }
 ```
-모든 속성들의 기본적인 `속성 테이블`은 다음과 같습니다.
+모든 속성들의 기본적인 `속성 테이블`은 다음과 같다.
 `u2 attribute_name_index`는 `CONSTANT_utf8`타입 상수를 참조해 표현하며, 
-`attribute_length`의 길이는 u4타입으로 나타냅니다.
+`attribute_length`의 길이는 u4타입으로 나타낸다.
 `JVM`에서는 미리 정의되어 있는 기존 속성 이름과 중복되지 않는 한
-자체 제작한 컴파일러가 새로운 속성 정보를 추가해서 사용할 수 있습니다.
+자체 제작한 컴파일러가 새로운 속성 정보를 추가해서 사용할 수 있다.
 # 
-`JVM`에서 정의한 속성은 최초 9개에서 JDK21에서는 총 30개로 늘었습니다. 
-간단하게 정리하면 아래와 같습니다.
+`JVM`에서 정의한 속성은 최초 9개에서 JDK21에서는 총 30개로 늘었다. 
+간단하게 정리하면 아래와 같다.
 
 <div class="tableWrapper">
 
@@ -67,13 +67,13 @@ attribute_info {
 
 </div>
 
-몇 개의 주요한 속성들을 살펴보겠습니다.
+몇 개의 주요한 속성들을 살펴보겠다.
 
 #
 ### Code 속성
-아무래도 소스 코드를 나타내는 `Code속성`이 가장 중요합니다.
+아무래도 소스 코드를 나타내는 `Code속성`이 가장 중요하다.
 메서드 본문 코드는 자바 컴파일러에 의해 최종적으로 바이트코드 명령어로 변환된 후
-`Code속성`에 저장됩니다. `인터페이스`나 `추상 메서드`는 `Code속성`이 없습니다.
+`Code속성`에 저장된다. `인터페이스`나 `추상 메서드`는 `Code속성`이 없다.
 ```java
 Code_attribute {
     u2 attribute_name_index; // 상수풀을 참조하여 속성 이름을 가리킵니다.
@@ -92,24 +92,24 @@ Code_attribute {
     attribute_info attributes[attributes_count]; // Code속성에 존재하는 속성
 }
 ```
-`max_stack`은 피연산자 스택의 최대 깊이를 뜻합니다.
-메서드가 실행되는 동안 피연산자 스택은 이 깊이를 절대 넘을 수 없습니다.
-`JVM`은 `max_stack`을 참고하여 피연산자 스택을 스택프레임에 할당합니다.
+`max_stack`은 피연산자 스택의 최대 깊이를 뜻한다.
+메서드가 실행되는 동안 피연산자 스택은 이 깊이를 절대 넘을 수 없다.
+`JVM`은 `max_stack`을 참고하여 피연산자 스택을 스택프레임에 할당한다.
 # 
-`max_locals`는 지역 변수 테이블에 필요한 저장소 공간입니다.
-`max_local`에는 `byte`,`char`,`double`,`long`과 같은 변수의 메모리가 할당됩니다.
-`메서드 매개변수`와 `this`매개변수 등 메서드 본문에 정의된 모든 지역 변수가 `max_local`에 저장됩니다.
+`max_locals`는 지역 변수 테이블에 필요한 저장소 공간이다.
+`max_local`에는 `byte`,`char`,`double`,`long`과 같은 변수의 메모리가 할당된다.
+`메서드 매개변수`와 `this`매개변수 등 메서드 본문에 정의된 모든 지역 변수가 `max_local`에 저장된다.
 #
-`code_length`는 자바 소스 코드가 컴파일되어 생성된 바이트코드 명령어들의 길이를 나타냅니다.
-`code`는 `code_length`만큼 바이토코드를 저장한 바이트코드 스트림입니다.
+`code_length`는 자바 소스 코드가 컴파일되어 생성된 바이트코드 명령어들의 길이를 나타낸다.
+`code`는 `code_length`만큼 바이토코드를 저장한 바이트코드 스트림이다.
 #
-`exception_table`은 해당 메서드에서 명시적으로 처리하는 예외 코드를 나타냅니다.
-`start_pc`와 `end_pc` 사이에서 예외가 발생하면 `handler_pc`줄로 이동하라는 뜻을 나타냅니다.
+`exception_table`은 해당 메서드에서 명시적으로 처리하는 예외 코드를 나타낸다.
+`start_pc`와 `end_pc` 사이에서 예외가 발생하면 `handler_pc`줄로 이동하라는 뜻을 나타낸다.
 
 ### Exception 속성
-메서드의 `exception_table`은 메서드 내에서 `try` `catch` 코드 블록을 나타냅니다.
-`Exception` 속성은 메서드에서 `throw` 될 수 있는 속성나냅니다. 
-`number_of_exceptions`를 통해 해당 메서드가 몇 개의 예외를 던지는지 나타냅니다. 
+메서드의 `exception_table`은 메서드 내에서 `try` `catch` 코드 블록을 나타낸다.
+`Exception` 속성은 메서드에서 `throw` 될 수 있는 속성나낸다. 
+`number_of_exceptions`를 통해 해당 메서드가 몇 개의 예외를 던지는지 나타낸다. 
 ```java
 Exceptions_attribute {
     u2 attribute_name_index;
@@ -120,8 +120,8 @@ Exceptions_attribute {
 ```
 
 ### LineNumberTable 속성
-자바 소스 코드의 줄 번호와 바이트코드의 줄번호 사이의 대응 관계를 설명하는 속성입니다.
-`LineNumberTable` 속성을 통해서 예외가 발생했을 때 오류를 일으킨 코드의 줄번호를 나타낼 수 있습니다.
+자바 소스 코드의 줄 번호와 바이트코드의 줄번호 사이의 대응 관계를 설명하는 속성이다.
+`LineNumberTable` 속성을 통해서 예외가 발생했을 때 오류를 일으킨 코드의 줄번호를 나타낼 수 있다.
 ```java
 LineNumberTable_attribute {
     u2 attribute_name_index;
@@ -133,8 +133,8 @@ LineNumberTable_attribute {
 }
 ```
 ### InnerClasses 속성
-내부 클래스와 호스트 클래스 사이의 연결 관계를 나타냅니다.
-`number_of_classes`는 해당 클래스에 내부 클래스가 몇 개 있는지 나타냅니다.
+내부 클래스와 호스트 클래스 사이의 연결 관계를 나타낸다.
+`number_of_classes`는 해당 클래스에 내부 클래스가 몇 개 있는지 나타낸다.
 ```java
 InnerClasses_attribute {
     u2 attribute_name_index;
@@ -149,9 +149,9 @@ InnerClasses_attribute {
 ```
 
 ### Signature 속성
-제네릭을 지원하기 위해 추가된 속성입니다.
-클래스, 필드, 메서드 테이블에서 사용할 수 있습니다.
-`Signature`속성 덕분에 리플렉션 API로 제네릭 정보를 얻을 수 있습니다.
+제네릭을 지원하기 위해 추가된 속성이다.
+클래스, 필드, 메서드 테이블에서 사용할 수 있다.
+`Signature`속성 덕분에 리플렉션 API로 제네릭 정보를 얻을 수 있다.
 ```java
 Signature_attribute {
     u2 attribute_name_index;
@@ -161,7 +161,7 @@ Signature_attribute {
 ```
 
 ### Outro
-이 밖에 다양한 속성들이 있습니다. 참고한 오라클 문서와 `JVM 밑바닥까지 파헤치기`를 참고해서 학습하면 좋을 것 같습니다.
+이 밖에 다양한 속성들이 있다. 참고한 오라클 문서와 `JVM 밑바닥까지 파헤치기`를 참고해서 학습하면 좋을 것 같다.
 
 ### Reference
 [오라클문서](https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html#jvms-4.7.3)  

@@ -5,8 +5,8 @@ import { Layout } from "../components/layout/layout"
 import Project from "../components/playground/project"
 import { StaticImage } from "gatsby-plugin-image"
 
-import speaksALotGif from '../static/images/playground/speaksalot.gif'
-import vocaWorldGif from '../static/images/playground/voca_world.gif'
+const speaksALotGif = '/images/playground/speaksalot.gif'
+const vocaWorldGif = '/images/playground/voca_world.gif'
 import algoProfilePng from '../static/images/playground/algorithm_profile.png'
 import crawlerPng from '../static/images/playground/crawler.png'
 
