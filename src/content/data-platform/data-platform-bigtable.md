@@ -133,4 +133,3 @@ tag: ["논문"]
 ### Outro
 `BigTable`은 확장 가능한 분산 스토리지가 필요할 때 `Google`이 내린 설계 선택들의 집합이다.
 `GFS`, `Chubby`와 같은 `Google`의 인프라 위에서 작동하지만, 핵심 아이디어인 `Column Family`, `Compaction`, `SSTable`은 `HBase`, `Cassandra` 등 다양한 오픈소스 시스템으로 이어져 지금도 널리 활용되고 있다.
-부족한 내용이나 고쳐야하는 부분이 있으면 피드백 바란다.
