@@ -4,7 +4,7 @@ title: "BigTable"
 date: "2026-05-17"
 category: "Data Platform"
 featuredImage: "../../static/images/contents/data_platform/big_table.png"
-tag: ["논문"]
+tag: ["논문", "데이터플랫폼"]
 ---
 
 ### Intro
