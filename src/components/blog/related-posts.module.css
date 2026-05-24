@@ -1,0 +1,46 @@
+@reference "../../styles/global.css";
+
+.RelatedPosts {
+    @apply
+    mt-12 pt-8
+    border-t border-gray-200
+}
+
+.Section {
+    @apply
+    mb-6
+}
+
+.Label {
+    @apply
+    mb-3
+    text-sm font-semibold
+    text-gray-400
+    uppercase tracking-wide
+}
+
+.Card {
+    @apply
+    flex items-center gap-3
+    w-full
+    px-4 py-3 mb-2
+    border border-gray-200
+    rounded-xl
+    transition-colors duration-150
+    hover:border-gray-400 hover:bg-gray-50
+}
+
+.Category {
+    @apply
+    shrink-0
+    px-2 py-0.5
+    text-xs text-white
+    rounded-full
+    bg-gray-500
+}
+
+.Title {
+    @apply
+    text-sm font-medium
+    text-gray-700
+}
