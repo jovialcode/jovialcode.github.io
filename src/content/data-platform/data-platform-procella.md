@@ -5,6 +5,7 @@ date: "2026-05-24"
 category: "Data Platform"
 tag: ["논문", "2019", "데이터플랫폼"]
 readBefore: ["data-platform-dremel"]
+readAfter: ["data-platform-roaring-bitmap"]
 ---
 
 ### Intro
