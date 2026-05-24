@@ -3,8 +3,8 @@ slug: "data-platform-dremel"
 title: "Dremel"
 date: "2026-05-20"
 category: "Data Platform"
-tag: ["논문", "데이터플랫폼"]
 featuredImage: "../../static/images/contents/data_platform/dremel.jpeg"
+tag: ["논문", "2010", "데이터플랫폼"]
 ---
 
 ### Intro
