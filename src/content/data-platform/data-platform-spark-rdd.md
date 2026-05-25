@@ -108,5 +108,5 @@ links = spark.textFile(...).map(...)
 `Task`를 배분할 때는 `data locality`를 고려해 `PreferredLocation` 기반으로 스케쥴링하고, 중간 결과는 `shuffle` 연산을 위해 생성된다.
 
 ### Outro
-`RDD` 논문은 2010년 `Spark`의 아이디어를 이론적으로 완성한 작업이다.
+2012년 NSDI에서 발표된 `RDD` 논문은 2010년 `Spark`에서 제시된 아이디어를 이론적으로 완성한 작업이다.
 `Lineage` 기반 `fault-tolerance`, `Narrow/Wide dependency` 구분, 다섯 가지 인터페이스로 정의되는 `RDD` 추상화는 이후 `Spark`가 산업 표준으로 자리잡는 토대가 됐다.
