@@ -1,4 +1,5 @@
 import * as React from "react"
+import { useEffect } from "react"
 import type { PageProps } from "gatsby"
 
 import { Layout } from "../components/layout/layout"
@@ -11,6 +12,15 @@ import algoProfilePng from '../static/images/playground/algorithm_profile.png'
 import crawlerPng from '../static/images/playground/crawler.png'
 
 const Index: React.FC<PageProps> = () => {
+  useEffect(() => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'view_item_list', {
+        item_list_id: 'home',
+        item_list_name: 'Home Page / Projects',
+      });
+    }
+  }, []);
+
   return (
     <Layout>
       <section>

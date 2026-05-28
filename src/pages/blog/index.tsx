@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { graphql, Link, PageProps } from "gatsby"
 
 import * as classes from "./style.module.css"
@@ -30,7 +30,26 @@ const Index: React.FC<PageProps<BlogQueryData>> = ({ data }) => {
   const { edges: posts } = data.allMarkdownRemark
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
 
+  useEffect(() => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'view_item_list', {
+        item_list_id: 'blog_list',
+        item_list_name: 'Blog List',
+      });
+    }
+  }, []);
+
   const categories = Array.from(new Set(posts.map(p => p.node.frontmatter.category)))
+
+  const handleCategoryClick = (category: string | null) => {
+    setSelectedCategory(category);
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'select_content', {
+        content_type: 'category',
+        item_id: category || 'all'
+      });
+    }
+  }
 
   const filteredPosts = selectedCategory
     ? posts.filter(p => p.node.frontmatter.category === selectedCategory)
@@ -51,7 +70,7 @@ const Index: React.FC<PageProps<BlogQueryData>> = ({ data }) => {
         <div className={classes.categoryFilter}>
           <button
             className={`${classes.filterButton} ${selectedCategory === null ? classes.filterButtonActive : ""}`}
-            onClick={() => setSelectedCategory(null)}
+            onClick={() => handleCategoryClick(null)}
           >
             All
           </button>
@@ -59,7 +78,7 @@ const Index: React.FC<PageProps<BlogQueryData>> = ({ data }) => {
             <button
               key={category}
               className={`${classes.filterButton} ${selectedCategory === category ? classes.filterButtonActive : ""}`}
-              onClick={() => setSelectedCategory(category)}
+              onClick={() => handleCategoryClick(category)}
             >
               {category}
             </button>

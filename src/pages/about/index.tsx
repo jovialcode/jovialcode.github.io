@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { PageProps } from "gatsby"
 
 import * as classes from "./style.module.css"
@@ -6,6 +6,18 @@ import { Layout } from "../../components/layout/layout"
 import Skill from "../../components/about/skill"
 
 const Index: React.FC<PageProps> = () => {
+  useEffect(() => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'view_item', {
+        items: [{
+          item_id: 'about',
+          item_name: 'About Me',
+          item_category: 'Profile',
+        }]
+      });
+    }
+  }, []);
+
   const dataEngineerSkills = ["Hadoop Ecosystem", "Hbase", "Java8", "Jenkins", "Spring", "SpringBoot", "VueJs", "Puppeteer", "Ansible"]
   const mlOpsSkills = ["Kubernetes", "Kustomize", "ArgoCD", "Kubeflow", "Airflow", "PyTorch", "Python3", "Rust", "MongoDB", "S3"]
   const backEndSkills = ["Spring ", "SpringBoot", "Jenkins", "Tomcat", "Java8", "Mysql"]

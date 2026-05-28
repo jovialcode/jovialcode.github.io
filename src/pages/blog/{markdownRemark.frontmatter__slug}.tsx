@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { graphql, PageProps } from 'gatsby'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader";
@@ -21,6 +21,8 @@ interface PostData {
       title: string
       date: string
       slug: string
+      category: string
+      tag: string[]
       readBefore?: string[]
       readAfter?: string[]
       featuredImage?: {
@@ -39,6 +41,20 @@ interface PostData {
 
 const PostTemplate: React.FC<PageProps<PostData>> = ({ data }) => {
   const post = data.markdownRemark
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'view_item', {
+        items: [{
+          item_id: post.frontmatter.slug,
+          item_name: post.frontmatter.title,
+          item_category: post.frontmatter.category,
+          item_variant: post.frontmatter.tag?.join(', '),
+        }]
+      });
+    }
+  }, [post]);
+
   const featuredImg = getImage(post.frontmatter.featuredImage?.childImageSharp?.gatsbyImageData ?? null)
 
   const allPosts = data.allMarkdownRemark.nodes.map(n => n.frontmatter)
@@ -73,6 +89,7 @@ export const query = graphql`
       frontmatter {
         title
         date(formatString: "YYYY-MM-DD")
+        category
         tag
         slug
         readBefore
