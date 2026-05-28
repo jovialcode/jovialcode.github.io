@@ -55,6 +55,34 @@ const PostTemplate: React.FC<PageProps<PostData>> = ({ data }) => {
     }
   }, [post]);
 
+  useEffect(() => {
+    const milestones = [25, 50, 75, 100];
+    const fired = new Set<number>();
+
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight <= 0) return;
+      const scrollPercent = Math.round((scrollTop / docHeight) * 100);
+
+      milestones.forEach(milestone => {
+        if (scrollPercent >= milestone && !fired.has(milestone)) {
+          fired.add(milestone);
+          if (typeof window !== 'undefined' && (window as any).gtag) {
+            (window as any).gtag('event', 'scroll_depth', {
+              event_category: 'engagement',
+              event_label: post.frontmatter.slug,
+              value: milestone,
+            });
+          }
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [post.frontmatter.slug]);
+
   const featuredImg = getImage(post.frontmatter.featuredImage?.childImageSharp?.gatsbyImageData ?? null)
 
   const allPosts = data.allMarkdownRemark.nodes.map(n => n.frontmatter)
