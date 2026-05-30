@@ -34,7 +34,7 @@ const Index: React.FC<PageProps> = () => {
 
   const companies: Company[] = [
     {
-      name: "주식회사크리스비",
+      name: "크리스비",
       period: "2024.12 - 재직중",
       duration: "1년 6개월",
       role: "백엔드 팀장",
