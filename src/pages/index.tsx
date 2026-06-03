@@ -7,7 +7,9 @@ import Project from "../components/playground/project"
 import { StaticImage } from "gatsby-plugin-image"
 
 const speaksALotGif = '/images/playground/speaksalot.gif'
+const speaksALot2Gif = '/images/playground/speaksalot_2.gif'
 const vocaWorldGif = '/images/playground/voca_world.gif'
+const reviwerGif = '/images/playground/reviwer.gif'
 import algoProfilePng from '../static/images/playground/algorithm_profile.png'
 import crawlerPng from '../static/images/playground/crawler.png'
 
@@ -37,6 +39,33 @@ const Index: React.FC<PageProps> = () => {
               <p className={"mt-3"}>
                 - GPT와 음성을 활용하여 영어 회화 공부<br/>
                 - STT / TTS / Prompt를 활용하여 AI가 Follow Up Question을 제공 <br/>
+              </p>
+            </div>
+          </Project>
+
+          <Project title={"Speaksalot 2"} tags={["gpt-4o-mini", "python3", "react", "fastAPI", "vite", "jwt", "cloudflare"]}>
+            <div className={"flex flex-col items-center"}>
+              <a className={"block relative"} href={"https://speaksalot.com"} target={"_blank"}>
+                <img className={"absolute top-6 left-6"} width={190} src={speaksALot2Gif} alt={"project"}/>
+                <StaticImage width={230} src={"../static/images/phone.png"} alt={"project"}/>
+              </a>
+              <p className={"mt-3"}>
+                - AI를 활용한 외국어 공부 (일본어, 영어, 스페인어) <br/>
+                - 말하기, 쓰기, 단어 학습 지원 <br/>
+                - STT / TTS / Prompt를 활용하여 외국어 학습 <br/>
+              </p>
+            </div>
+          </Project>
+
+          <Project title={"Reviwer"} tags={["flutter", "prefect", "crawling", "python3", "kafka", "ollama", "quixstreams", "litestar", "kt-cloud"]}>
+            <div className={"flex flex-col items-center"}>
+              <a className={"block"} target={"_blank"}>
+                <img width={190} src={reviwerGif} alt={"project"}/>
+              </a>
+              <p className={"mt-3"}>
+                - 리뷰 체험단 사이트들을 수집하여 지도 UI로 내용 제공 <br/>
+                - 체험 사이트 prefect 파이프라인을 통한 데이터 수집 <br/>
+                - 리뷰 체험단 관리 및 커뮤니티 앱 <br/>
               </p>
             </div>
           </Project>

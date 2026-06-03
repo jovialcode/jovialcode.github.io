@@ -81,7 +81,7 @@ const Index: React.FC<PageProps> = () => {
       ],
     },
     {
-      name: "빅웨이브로보틱스주식회사",
+      name: "빅웨이브로보틱스",
       period: "2024.07 - 2024.11",
       duration: "5개월",
       role: "데이터 엔지니어",
@@ -179,7 +179,7 @@ const Index: React.FC<PageProps> = () => {
       ],
     },
     {
-      name: "주식회사 케이티알파",
+      name: "케이티알파",
       period: "2017.01 - 2018.08",
       duration: "1년 8개월",
       role: "웹 개발 풀스택",
