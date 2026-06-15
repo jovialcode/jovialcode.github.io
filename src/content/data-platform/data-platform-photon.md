@@ -1,6 +1,6 @@
 ---
 slug: "data-platform-photon"
-title: "Photon: Databricks의 Vectorized Query Engine (2022)"
+title: "Photon: Databricks의 Vectorized Query Engine"
 date: "2026-06-05"
 category: "Data Platform"
 featuredImage: "../../static/images/contents/data_platform/photon.png"

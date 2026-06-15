@@ -1,6 +1,6 @@
 ---
 slug: "data-platform-spark-sql"
-title: "Spark SQL: 관계형 처리의 통합과 Catalyst 옵티마이저 (2015)"
+title: "Spark SQL: 관계형 처리의 통합과 Catalyst 옵티마이저"
 date: "2026-06-02"
 category: "Data Platform"
 featuredImage: "../../static/images/contents/data_platform/spark_sql_catalyst_pipeline.png"

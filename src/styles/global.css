@@ -256,3 +256,11 @@
     overflow-x-auto
     my-5
 }
+
+.Blog p:has(> .gatsby-resp-image-wrapper) > em {
+    display: block;
+    @apply
+    text-right
+    text-xs
+    text-gray-400
+}
